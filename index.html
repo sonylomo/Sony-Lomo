@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Just a list of my links." />
+    <meta name="theme-color" content="#000000" />
+    <title>sonylomo</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="profile_pic">
+      <img
+        src="assets/logo.png"
+        alt="profile pic"
+        width="100px"
+        height="100px"
+      />
+      <h2>Sonia Lomo</h2>
+    </section>
+
+    <section class="all_links">
+      <article class="link" data-toggle="tooltip" title="Copy to Clipboard">
+        <div><img src="assets/github.png" alt="github logo" /></div>
+        <div>
+          <a class="copy_text" href="https://github.com/sonylomo">github</a>
+        </div>
+      </article>
+
+      <article class="link" data-toggle="tooltip" title="Copy to Clipboard">
+        <div><img src="assets/website.png" alt="website logo" /></div>
+        <div>
+          <a class="copy_text" href="https://sonylomo.dev">website</a>
+        </div>
+      </article>
+
+      <article class="link" data-toggle="tooltip" title="Copy to Clipboard">
+        <div><img src="assets/twitter.png" alt="twitter logo" /></div>
+        <div>
+          <a href="https://twitter.com/sony_lomo">twitter</a>
+        </div>
+      </article>
+
+      <article class="link" data-toggle="tooltip" title="Copy to Clipboard">
+        <div><img src="assets/linkedin.png" alt="linkedin logo" /></div>
+        <div>
+          <a class="copy_text" href="https://www.linkedin.com/in/sonia-lomo/"
+            >linkedin</a
+          >
+        </div>
+      </article>
+
+      <article class="link" data-toggle="tooltip" title="Copy to Clipboard">
+        <div><img src="assets/gmail.png" alt="gmail logo" /></div>
+        <div>
+          <a class="copy_text" href="sonylomo1@gmail.com">email</a>
+        </div>
+      </article>
+    </section>
+    <footer>Sonia Lomo © 2022</footer>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // checks if the browser supports service workers.
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js");
+      } else {
+        console.error("Service workers are not supported.");
+      }
+
+      $(".link").click(function (e) {
+        e.preventDefault();
+        var copyText = $(this).find("a").attr("href");
+
+        document.addEventListener(
+          "copy",
+          function (e) {
+            e.clipboardData.setData("text/plain", copyText);
+            e.preventDefault();
+          },
+          true
+        );
+
+        document.execCommand("copy");
+        console.log("copybtn: ", copyText);
+        alert("🤸🏾‍♀️ url copied to clipboard: " + copyText);
+      });
+    </script>
+  </body>
+</html>
